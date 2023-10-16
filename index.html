@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+
+
+
+
+
+    <body>
+        <script>
+            var input = prompt("How many courses did you finish?","0");
+            var numOfCourses = parseInt(input);
+            if (isNaN(numOfCourses)) {
+            
+            document.write("Invalid Input!");
+            } else {
+                
+                var courseMarks = []; 
+
+                var i = 0;
+                while (i < numOfCourses) {
+                    var courseMark = parseFloat(prompt("enter the course grade " + (i + 1)));
+
+                    if (!isNaN(courseMark) && courseMark>=0 && courseMark <=100) {
+                    
+                    courseMarks.push(courseMark);
+                    i++;
+                   
+                    } else {
+                    document.write("<p>invalide grade for course " + (i + 1) + "</p>");
+                    }
+                }
+                var total=0;
+                for(var i=0;i<numOfCourses;i++){
+                    document.write("<p>" + courseMarks[i] + " </p>");
+                    total+=courseMarks[i];
+                }
+                
+                var average=0;
+                
+               
+                    
+
+                
+                average=total/numOfCourses;
+                
+                if(average<=100 && average>=90){
+                    document.write("<p> your finale average is " + average + ". Your grade is A+");
+
+                }
+                if(average<=89 && average>=80){
+                    document.write("<p> your finale average is " + average + ". Your grade is B");
+
+                }
+                if(average<=79 && average>=70){
+                    document.write("<p> your finale average is " + average + ". Your grade is C");
+
+                }
+                if(average<=69 && average>=60){
+                    document.write("<p> your finale average is " + average + ". Your grade is D");
+
+                }
+                if(average<60 && average>=0){1
+                    document.write("<p> your finale average is " + average + ". Your grade is F");
+
+                }
+               
+
+
+
+
+
+            }
+
+        </script>
+
+    </body>
+
+
+
+</html>

@@ -1,56 +1,59 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Grade</title>
 </head>
+
 <body>
     <script>
         let userInput = prompt("How many courses did you finish?", "0");
-let numOfCourses = parseInt(userInput);
+        let numOfCourses = parseInt(userInput);
 
-if (isNaN(numOfCourses) || userInput.trim() === "") {
-    document.write("<p>Invalid Input!</p>");
-} else {
-    let courseMarks = [];
-    let total = 0; 
-    let counter = 1;
+        if (isNaN(numOfCourses) || userInput.trim() === "" || numOfCourses < 0) {
+            document.write("<p>Invalid Input!</p>");
+        } else {
+            let courseMarks = [];
+            let total = 0;
+            let counter = 1;
 
-    while (counter <= numOfCourses) {
-        let mark = parseFloat(prompt(Enter your mark for course ${counter} (0 - 100)));
-        courseMarks.push(mark);
-        total += mark; 
-        counter++;
-    }
+            while (counter <= numOfCourses) {
+                let mark = parseFloat(prompt(`Enter your mark for course ${counter} (0 - 100)`));
+                
+                if (mark < 0 || mark > 100 || isNaN(mark)) {
+                    alert("Please enter a valid mark between 0 and 100!");
+                    continue;
+                }
 
+                courseMarks.push(mark);
+                total += mark;
+                counter++;
+            }
 
-    let average = total / courseMarks.length;
-    average = average.toFixed(2); 
+            let average = total / courseMarks.length;
+            average = average.toFixed(2);
 
+            document.write("<p>The course marks you entered are:</p>");
+            for (let i = 0; i < courseMarks.length; i++) {
+                document.write(`<p>Mark for course ${i + 1}: ${courseMarks[i]}</p>`);
+            }
 
-    document.write("<p>The course marks you entered are:</p>");
-    for (let i = 0; i < courseMarks.length; i++) {
-        document.write(<p>Mark for course ${i+1}: ${courseMarks[i]}</p>);
-    }
-
-
-    if (average >= 90 && average <= 100) {
-        document.write(<p>Your final average is ${average}. Your grade is A+</p>);
-    } else if (average >= 80 && average < 90) {
-        document.write(<p>Your final average is ${average}. Your grade is B</p>);
-    } else if (average >= 70 && average < 80) {
-        document.write(<p>Your final average is ${average}. Your grade is C</p>);
-    } else if (average >= 60 && average < 70) {
-        document.write(<p>Your final average is ${average}. Your grade is D</p>);
-    } else if (average < 60) {
-        document.write(<p>Your final average is ${average}. Your grade is F</p>);
-    } else {
-        document.write("<p>Sorry, all the marks have to be from minimum 0 to maximum 100!</p>");
-    }
-}
+            if (average >= 90 && average <= 100) {
+                document.write(`<p>Your final average is ${average}. Your grade is A+</p>`);
+            } else if (average >= 80 && average < 90) {
+                document.write(`<p>Your final average is ${average}. Your grade is B</p>`);
+            } else if (average >= 70 && average < 80) {
+                document.write(`<p>Your final average is ${average}. Your grade is C</p>`);
+            } else if (average >= 60 && average < 70) {
+                document.write(`<p>Your final average is ${average}. Your grade is D</p>`);
+            } else if (average < 60) {
+                document.write(`<p>Your final average is ${average}. Your grade is F</p>`);
+            } else {
+                document.write("<p>Sorry, an error occurred!</p>");
+            }
+        }
     </script>
 </body>
+
 </html>
-
-
-
